@@ -47,7 +47,7 @@ void setup()
 void loop()
 {
 
-// --- Variável temp armazena temperatura a patir da leitura analógica do sensor ---
+// --- Variável temp armazena temperatura a partir da leitura analógica do sensor ---
 
   temp = (float(analogRead(sensorTemperatura)) * 5 / (1023)) / 0.01;
 
