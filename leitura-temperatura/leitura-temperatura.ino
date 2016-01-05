@@ -5,7 +5,7 @@
  */
  
 #include <LiquidCrystal.h>							//biblioteca display LCD
-#include <DHT.h>									      //biblioteca sensor de temperatura DHT 11
+#include <DHT.h>								//biblioteca sensor de temperatura DHT 11
 
 // --- Hardware ---
 
@@ -26,21 +26,21 @@ DHT dht(pinoSensor, sensorTemperatura);
 // --- Array símbolo grau ---
 
 byte grau[8] = {0x0C,
-				        0x12,
-				        0x12,
-				        0x0C,
-				        0x00,
-				        0x00,
-				        0x00,
-				        0x00};
+		0x12,
+		0x12,
+		0x0C,
+                0x00,
+		0x00,
+		0x00,
+		0x00};
 
  // --- Configurações Iniciais ---
 
 void setup()
 {
 	lcd.begin(16,2);				    //inicializo display LCD 16 x 2
-	lcd.clear();				      	//limpa o LCD
-	lcd.createChar(0, grau);		//crio um caracterer customizado
+	lcd.clear();				      	    //limpa o LCD
+	lcd.createChar(0, grau);		            //crio um caracterer customizado
 }
 
 // --- Loop Infinito ---
