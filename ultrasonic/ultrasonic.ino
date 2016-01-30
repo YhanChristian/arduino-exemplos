@@ -5,15 +5,12 @@
 */
 
 // --- Bibliotecas Auxiliares ---
-
 #include <Ultrasonic.h>
 #include <LiquidCrystal.h>
 
 // --- Hardware ---
-
 #define  trigger_pin 8
 #define  echo_pin 9
-
 
 // --- Definição pinos LCD ---
  LiquidCrystal lcd(7,
@@ -26,7 +23,6 @@
 // --- Inicializo o sensor ultrasom ---
 Ultrasonic ultrasonic(trigger_pin, echo_pin);
 
-
 void setup()
 {
 	lcd.begin(16,2);		// Inicialização do display LCD 16 x 2 
@@ -35,7 +31,7 @@ void setup()
 
 void loop()
 {
-	float cm, pol;								//Variáveis p/ leitura em cm e pol 
+	float cm, pol;						//Variáveis p/ leitura em cm e pol 
 	long microsec = ultrasonic.timing();
 	cm = ultrasonic.convert(microsec, Ultrasonic::CM);
 	pol = ultrasonic.convert(microsec,Ultrasonic::IN);
