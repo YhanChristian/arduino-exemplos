@@ -22,9 +22,9 @@ void loop(){
 	Serial.print("Corrente: ");           
 	Serial.println(irms);                //Exibição valor corrente 
 	Serial.print("Potencia: ");
-//Condição para calculo de potência, corrente menor que 5mA,potencia = 0
-  if (irms < 0.005) Serial.println(0);
-  else	Serial.println(tensao * irms);
+	//Condição para calculo de potência, corrente menor que 5mA,potencia = 0
+  	if (irms < 0.005) Serial.println(0);
+	else Serial.println(tensao * irms);
 	delay(1000);                      
 }
 
