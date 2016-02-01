@@ -9,7 +9,7 @@
 
 #define redLed 13          
 
-SoftwareSerial mySerial(0, 1); // pino 6 RxD e pino 7 TxD
+SoftwareSerial mySerial(0, 1); // pino 0 RxD e pino 1 TxD
 
 char var;
 
