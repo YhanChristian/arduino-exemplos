@@ -35,7 +35,7 @@ void setup() {
 void loop() {
 	DateTime now = RTC.now();
 	lcd.setCursor(0, 0);
-  lcd.print("Data: ");
+  	lcd.print("Data: ");
 	lcd.print(now.day(), DEC);
 	lcd.print("/");
 	lcd.print(now.month(), DEC);
@@ -43,7 +43,7 @@ void loop() {
 	lcd.print(now.year(), DEC);
 	lcd.print(" ");
 	lcd.setCursor(0, 1);
-  lcd.print("Hora: ");
+	  lcd.print("Hora: ");
   
 	if(now.hour() < 10 ) lcd.print("0");
 	lcd.print(now.hour(), DEC);
