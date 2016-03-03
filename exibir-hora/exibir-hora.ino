@@ -39,7 +39,7 @@ void loop() {
 	lcd.print(now.day(), DEC);
 	lcd.print("/");
 	lcd.print(now.month(), DEC);
-	lcd.print("/");
+  lcd.print("/");
 	lcd.print(now.year(), DEC);
 	lcd.print(" ");
 	lcd.setCursor(0, 1);

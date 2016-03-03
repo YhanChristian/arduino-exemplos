@@ -4,9 +4,9 @@
   Autor: Yhan Christian Souza Silva - Data: 30/01/2016
 */
 
-#include <EmonLib.h>            //biblioteca auxiliar
+#include "EmonLib.h"            //biblioteca auxiliar
 
-#define sensorCorrente A0      //definição pino sensor
+#define sensorCorrente A1      //definição pino sensor
 
 EnergyMonitor emon1;
 
@@ -23,7 +23,7 @@ void loop(){
 	Serial.println(irms);                //Exibição valor corrente 
 	Serial.print("Potencia: ");
 	//Condição para calculo de potência, corrente menor que 5mA,potencia = 0
-  	if (irms < 0.005) Serial.println(0);
+  if (irms < 0.005) Serial.println(0);
 	else Serial.println(tensao * irms);
 	delay(1000);                      
 }
