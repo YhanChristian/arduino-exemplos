@@ -1,5 +1,5 @@
 /* 
-  Leitura de dois sensores via bluettoh
+  Leitura de dois sensores via bluetooth
   Utilizado: Arduino Uno, LM35, LDR e Módulo Bluetooth HC-05
   Autor: Yhan Christian Souza Silva - Data: 04/07/2016
  */
