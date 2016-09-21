@@ -389,7 +389,7 @@ function limpaDisplay()
 endfunction
 
 //altera status regulagem
-function alturaStatusRegulagem()
+function alteraStatusRegulagem()
     global %habilita_regulagem
     e = findobj("tag", "enableRegulationCBO");
     %habilita_regulagem = e.value;
@@ -466,7 +466,7 @@ _("Modo de Regulagem"), "center", "top", createBorderFont("", 11, "normal"),...
 
 enableRegulation = uicontrol(f, "style", "checkbox", "position", ...
 [20 520 140 20],"string", "ON/OFF", "value", %habilita_regulagem, ...
-"callback", "alturaStatusRegulagem", "tag", "enableRegulationCBO");
+"callback", "alteraStatusRegulagem", "tag", "enableRegulationCBO");
 
 enableP = uicontrol(f, "style", "checkbox", "position", [20 500 140 20], ...
 "string", "Controle P", "value", %PI, ...
