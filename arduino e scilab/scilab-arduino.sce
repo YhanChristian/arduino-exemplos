@@ -370,7 +370,7 @@ a.foreground=color("blue");
 a.font_color=color("blue");
 e = gce();
 e = e.children(1);
-e.tag = "regulacaoHora";
+e.tag = "regulagemHora";
 
 //* Funções
 
@@ -384,7 +384,7 @@ function limpaDisplay()
     e.data(:, 2) = 0;
     e = findobj("tag", "regulagemMinuto");
     e.data(:, 2) = 0;
-    e = findobj("tag", "regulacaoHora");
+    e = findobj("tag", "regulagemHora");
     e.data(:, 2) = 0;
 endfunction
 
@@ -403,7 +403,7 @@ function atualizaValorCarga(data)
     e = findobj("tag", "regulagemMinuto");
     lastPoints = e.data(:, 2);
     e.data(:, 2) = [lastPoints(2:$) ; data];
-    e = findobj("tag", "regulacaoHora");
+    e = findobj("tag", "regulagemHora");
     lastPoints = e.data(:, 2);
     e.data(:, 2) = [lastPoints(2:$) ; data];
 endfunction
