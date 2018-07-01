@@ -30,8 +30,8 @@ Adafruit_PCD8544 myDisplay = Adafruit_PCD8544(D8, D7, D6, D5, D2);
 // Valor verificado no site da ANEEL com ranking de custo médio kWh = http://www.aneel.gov.br/ranking-das-tarifas
 
 
-char ssid[] = "Familia Souza";
-char password[] = "34632010";
+char ssid[] = "Seu SSID";
+char password[] = "Sua senha";
 const int sensorPin = A0;
 const int E2PromSize = 512;
 const float calibrationValue = 9.09;
@@ -42,9 +42,9 @@ long lastMillis01 = 0;
 
 // -- Autenticação Cayenne --
 
-char cayenneUsername[] = "3fef4820-62bc-11e8-bcfb-4dffbccea8f6";
-char cayennePassword[] = "e7a07479905ed1fb2538518e0eae2865bbba0169";
-char cayenneClientID[] = "dee29660-62be-11e8-a700-878cdd8a64eb";
+char cayenneUsername[] = "seu username Cayenne";
+char cayennePassword[] = "seu password Cayenne";
+char cayenneClientID[] = "seu client ID Cayenne";
 
 
 
