@@ -17,9 +17,9 @@
 
 // -- Definições de Rede e conexão MQTT / Tópico a ser publicado --
 
-const char *ssid = "familia souza";
-const char *password = "34632010";
-const char *MQTTServer = "192.168.0.7";
+const char *ssid = "Seu SSID";
+const char *password = "Sua senha";
+const char *MQTTServer = "IP máquina local onde mosquitto esta instalado";
 const int   MQTTPort = 1883;
 const char* PIRTopic = "pir";
 
