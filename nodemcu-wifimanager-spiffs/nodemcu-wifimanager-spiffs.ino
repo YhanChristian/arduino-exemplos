@@ -8,15 +8,30 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <DNSServer.h>
-#include <WiFiManager.h> 
+#include <WiFiManager.h>
 #include <ArduinoJson.h>
 #include <FS.h>
+#include <DallasTemperature.h>
+#include <OneWire.h>
+
+// -- Hardware --
+
+#define pinoSensor 2 // Corresponde ao pino D4
+
+// -- Instância objetos --
+
+OneWire oneWire(pinoSensor);
+
+DallasTemperature tempSensor(&oneWire);
 
 // -- Variáveis Globais --
 
 bool shouldSaveConfig = false; //flag para salvar config.
 char mqttServer[40];
 char mqttPort[6];
+unsigned long lastMillis;
+const int interval = 2000;
+
 
 //Callback confirmando config. salva com sucesso
 
@@ -31,6 +46,7 @@ void saveConfigCallback () {
 
 void setup() {
   Serial.begin(115200);
+  tempSensor.begin();
   Serial.println("Montando arquivo FS");
   if (SPIFFS.begin()) {
     Serial.println("Arquivo montado...");
@@ -94,10 +110,19 @@ void setup() {
     else Serial.println("Arquivo salvo com sucesso!");
     configFile.close();
   }
+  delay(1000);
 }
 
+/*
+ *  Loop com leitura de temperatura
+ */
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  if (millis() - lastMillis > interval) {
+    tempSensor.requestTemperatures();
+    float readTemp = tempSensor.getTempCByIndex(0);
+    Serial.print("Temperatura ºC = ");
+    Serial.println(readTemp);
+    lastMillis = millis();
+  }
 }
