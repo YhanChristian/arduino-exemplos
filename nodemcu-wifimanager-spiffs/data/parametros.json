@@ -1,0 +1,7 @@
+{
+  "Tanque": 
+  {
+    "volume_minimo": 100,
+    "volume_maximo": 700
+  }
+}
