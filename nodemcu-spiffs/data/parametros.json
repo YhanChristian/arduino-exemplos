@@ -1,0 +1,15 @@
+{
+    "Dimensoes":
+  {
+    "height": 11,
+    "lenght": 9,
+    "width": 14
+  },
+  
+  "Tanque": 
+  {
+    "volume_minimo": 200,
+    "volume_maximo": 1000
+  }
+
+}

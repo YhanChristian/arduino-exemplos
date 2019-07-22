@@ -1,0 +1,15 @@
+{
+  
+  "WiFi_Config":
+  {
+    "ssid": "seu ssid", "password": "sua senha"
+  },
+  
+  "MQTT_Config": 
+  {
+    "mqttServer": "IP máquina local", "mqttPort": 1883 
+  }
+  
+  
+}
+  
