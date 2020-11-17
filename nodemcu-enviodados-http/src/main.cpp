@@ -10,10 +10,11 @@
 #include <ESP8266HTTPClient.h>
 #include <Arduino.h>
 
-//=============================== Defines / Hardware ===================================
+//=============================== Defines / Hardware =================================
 
 #define WIFI_SSID  "Seu SSID"
-#define WIFI_PASS "SUA SENHA"
+#define WIFI_PASS "Sua Senha"
+
 #define BAUD_RATE 9600
 
 #define INTERVALO 60000
