@@ -70,7 +70,7 @@ void conectaWiFi()
   delay(1000);
 }
 
-//Checa coneexão e retorna status
+//Checa conexão e retorna status
 
 boolean checaConexaoWiFi()
 {
