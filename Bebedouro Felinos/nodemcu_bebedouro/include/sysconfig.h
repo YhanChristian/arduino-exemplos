@@ -26,12 +26,9 @@
 
 // Defines Gerais
 
-#define BAUD_RATE 9600
-#define DEBUG 
+#define BAUD_RATE 115200
 
-// Instância Objeto 
-
-Ticker ticker;
+#define INTERVALO_MILLIS_01 250
 
 //Protótipo das Funções
 
@@ -39,6 +36,6 @@ void iniciaIOs();
 void iniciaSerial();
 void conectaWiFi();
 void configModeCallback(WiFiManager *myWiFiManager); 
-void tick(uint8_t pino);
+void tick();
 
 #endif

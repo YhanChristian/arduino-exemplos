@@ -1,7 +1,6 @@
-//Bibliotecas Auxiliares 
+//Bibliotecas Auxiliares
 
 #include "sysconfig.h"
-
 
 /*Função: iniciaIOs
   Configura Entradas e Saídas e inicia com todos os pinos desligados 
@@ -11,7 +10,7 @@
 
 void iniciaIOs()
 {
-  //Declara Entradas 
+  //Declara Entradas
   pinMode(SENSOR_NIVEL, INPUT_PULLUP);
   pinMode(HABILITA_SISTEMA, INPUT_PULLUP);
   //Declara Saídas
@@ -21,12 +20,10 @@ void iniciaIOs()
   pinMode(LED_STATUS, OUTPUT);
 
   //Inicia  saídas em nível lógico baixo
-  digitalWrite(LED_NIVEL_ALTO, LOW);
+  digitalWrite(LED_NIVEL_ALTO, HIGH);
   digitalWrite(LED_NIVEL_BAIXO, LOW);
   digitalWrite(LED_STATUS, LOW);
-
 }
-
 
 /*Função: iniciaSerial
   Inicia comunicação serial 
@@ -36,7 +33,7 @@ void iniciaIOs()
 
 void iniciaSerial()
 {
-    Serial.begin(BAUD_RATE);
+  Serial.begin(BAUD_RATE);
 }
 
 /*Função: conectaWiFi
@@ -47,7 +44,34 @@ void iniciaSerial()
 
 void conectaWiFi()
 {
+  // Instância Objetos
 
+  Ticker ticker;
+
+  WiFiManager wifiManager;
+
+  //Pisca LED indicando LED_STATUS
+
+  ticker.attach(0.5, tick);
+
+  //reset settings - for testing
+  //wifiManager.resetSettings();
+
+  //Chama modo AP para configuração WiFi
+  wifiManager.setAPCallback(configModeCallback);
+
+  if (!wifiManager.autoConnect("Agua Felinos", "12345678"))
+  {
+    Serial.println("Falha de conexão WiFi");
+  }
+
+  //Conexão realizada com sucesso
+  Serial.println("Conectado com sucesso");
+
+  //Desabilita o ticker e mantém led status ligado
+  ticker.detach();
+
+  digitalWrite(LED_STATUS, HIGH);
 }
 
 /*Função: configModeCallback
@@ -58,16 +82,25 @@ void conectaWiFi()
 
 void configModeCallback(WiFiManager *myWiFiManager)
 {
+  // Instância Objetos
 
+  Ticker ticker;
+
+  Serial.println("Entrou no modo AP - Gentileza Acessar");
+  Serial.println(WiFi.softAPIP());
+  Serial.println(myWiFiManager->getConfigPortalSSID());
+
+  //LED_STATUS pisca mais rápido indicando modo de configuração
+  ticker.attach(0.2, tick);
 }
 
 /*Função: tick
-  Função para piscar o LED
-  Parâmetros: inteiro: pino LED a ser utilizada função piscaLED
+  Função para piscar o LED_STATUS
+  Parâmetros: nenhum
   Retorno: nenhum
 */
 
-void tick(uint8_t pino)
+void tick()
 {
-    digitalWrite(pino, !digitalRead(pino));
+  digitalWrite(LED_STATUS, !digitalRead(LED_STATUS));
 }

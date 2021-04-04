@@ -20,6 +20,11 @@
 
 #include <Arduino.h>
 #include "sysconfig.h"
+#include "sysuser.h"
+
+ //Protótipo Funções Auxiliares
+
+ //Setup 
 
 void setup()
 {
@@ -29,9 +34,36 @@ void setup()
   //Configura comunicação Serial
   iniciaSerial();
 
+  //Inicia comunicação WiFi 
+  conectaWiFi();
 }
 
+//Loop 
 void loop()
 {
+  bool leHabilitaSistema = leituraEntradaDigital(HABILITA_SISTEMA);
+
+  if(!leHabilitaSistema)
+  {
+    bool leSensorNivel = leituraEntradaDigital(SENSOR_NIVEL);
+
+    if(leSensorNivel)
+    {
+      ligaSaidaDigital(LED_NIVEL_ALTO);
+      desligaSaidaDigital(LED_NIVEL_BAIXO);
+    }
+
+    else
+    {
+      ligaSaidaDigital(LED_NIVEL_BAIXO);
+      desligaSaidaDigital(LED_NIVEL_ALTO);
+
+    }
+
+  }
+  else
+  {
+     desabilitaSistema();
+  }
   
 }
