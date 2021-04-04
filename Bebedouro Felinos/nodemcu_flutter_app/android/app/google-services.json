@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "553664518356",
+    "project_id": "bebedouro-felinos",
+    "storage_bucket": "bebedouro-felinos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553664518356:android:cdac135f333de526e64341",
+        "android_client_info": {
+          "package_name": "com.example.nodemcu_flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553664518356-b8sgfu9f3f7ijsiu70ab87qqh4lqflqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB49Y3CGRJv0MUcUS0i3g9p0TaT9fwyf8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553664518356-b8sgfu9f3f7ijsiu70ab87qqh4lqflqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
