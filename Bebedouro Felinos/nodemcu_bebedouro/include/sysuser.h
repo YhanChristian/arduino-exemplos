@@ -1,5 +1,5 @@
-#ifndef _SYSUSER_H_
-#define _SYSUSER_H_
+#ifndef _SYSUSER_H
+#define _SYSUSER_H
 
 // Bibliotecas Auxiliares 
 
@@ -13,5 +13,4 @@ void ligaSaidaDigital(uint8_t pino);
 void desligaSaidaDigital(uint8_t pino);
 void desabilitaSistema();
 void indicaSistemaDesabilitado();
-
 #endif

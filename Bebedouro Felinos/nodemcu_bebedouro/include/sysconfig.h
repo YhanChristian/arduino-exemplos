@@ -1,5 +1,5 @@
-#ifndef _SYSCONFIG_H_
-#define _SYSCONFIG_H_
+#ifndef _SYSCONFIG_H
+#define _SYSCONFIG_H
 
 // Bibliotecas Auxiliares 
 #include <Arduino.h>
@@ -37,5 +37,9 @@ void iniciaSerial();
 void conectaWiFi();
 void configModeCallback(WiFiManager *myWiFiManager); 
 void tick();
+void configInterrupt();
+extern ICACHE_RAM_ATTR void trataISR();
+void desabilitaWDT();
+void habilitaWDT();
 
 #endif

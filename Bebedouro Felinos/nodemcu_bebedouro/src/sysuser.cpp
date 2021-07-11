@@ -50,9 +50,6 @@ void desabilitaSistema()
     indicaSistemaDesabilitado();
     ultimoMillis = millis();
   }
-
-
-
 }
 
 /*Função: indicaSistemaDesabilitado
@@ -66,3 +63,4 @@ void indicaSistemaDesabilitado()
   digitalWrite(LED_NIVEL_ALTO, !digitalRead(LED_NIVEL_ALTO));
   digitalWrite(LED_NIVEL_BAIXO, !digitalRead(LED_NIVEL_BAIXO));
 }
+

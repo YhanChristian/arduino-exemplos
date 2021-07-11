@@ -18,36 +18,47 @@
 
 //Biblioteca Auxiliares
 
-#include <Arduino.h>
-#include "sysconfig.h"
-#include "sysuser.h"
+#include "main.h"
 
- //Protótipo Funções Auxiliares
+//Variáveis e Constantes
 
- //Setup 
+bool zeroCrossDetector = false;
+
+
+//Setup
 
 void setup()
 {
+  //Desabilita WDT
+  desabilitaWDT();
+
   //Configura pinos de IO
   iniciaIOs();
 
   //Configura comunicação Serial
   iniciaSerial();
 
-  //Inicia comunicação WiFi 
+  //Inicia comunicação WiFi
   conectaWiFi();
+
+  //Configura interrupção D2 = ZERO CROSS DETECTOR
+
+  configInterrupt();
+
+  //Habilita WDT 1000ms (ou seja 1s)
+  habilitaWDT();
 }
 
-//Loop 
+//Loop
 void loop()
 {
   bool leHabilitaSistema = leituraEntradaDigital(HABILITA_SISTEMA);
 
-  if(!leHabilitaSistema)
+  if (!leHabilitaSistema)
   {
     bool leSensorNivel = leituraEntradaDigital(SENSOR_NIVEL);
 
-    if(leSensorNivel)
+    if (leSensorNivel)
     {
       ligaSaidaDigital(LED_NIVEL_ALTO);
       desligaSaidaDigital(LED_NIVEL_BAIXO);
@@ -57,13 +68,26 @@ void loop()
     {
       ligaSaidaDigital(LED_NIVEL_BAIXO);
       desligaSaidaDigital(LED_NIVEL_ALTO);
-
     }
-
   }
   else
   {
-     desabilitaSistema();
+    desabilitaSistema();
   }
-  
+
+  //Alimenta WDT atualizando sistemaT
+   yield();
+  ESP.wdtFeed();
+}
+
+/*Função: trataISR
+  Tratamento interrupçao ZeroCross Detector TRIAC, tornando o bit zeroCrossDetector = 1; 
+  Parâmetros: nenhum
+  Retorno: nenhum
+*/
+ICACHE_RAM_ATTR void trataISR()
+{
+  zeroCrossDetector = true; 
+  digitalWrite(LED_BUILTIN, LOW);
+  Serial.println("O pai ta on!");
 }

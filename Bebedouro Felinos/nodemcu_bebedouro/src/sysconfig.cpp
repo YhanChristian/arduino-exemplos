@@ -11,6 +11,7 @@
 void iniciaIOs()
 {
   //Declara Entradas
+  pinMode(ZERO_CROSS, INPUT_PULLUP);
   pinMode(SENSOR_NIVEL, INPUT_PULLUP);
   pinMode(HABILITA_SISTEMA, INPUT_PULLUP);
   //Declara Saídas
@@ -18,11 +19,13 @@ void iniciaIOs()
   pinMode(LED_NIVEL_ALTO, OUTPUT);
   pinMode(LED_NIVEL_BAIXO, OUTPUT);
   pinMode(LED_STATUS, OUTPUT);
+  pinMode(SAIDA_PWM, OUTPUT);
 
   //Inicia  saídas em nível lógico baixo
   digitalWrite(LED_NIVEL_ALTO, HIGH);
   digitalWrite(LED_NIVEL_BAIXO, LOW);
   digitalWrite(LED_STATUS, LOW);
+  digitalWrite(SAIDA_PWM, LOW);
 }
 
 /*Função: iniciaSerial
@@ -44,18 +47,15 @@ void iniciaSerial()
 
 void conectaWiFi()
 {
+
   // Instância Objetos
-
-  Ticker ticker;
-
   WiFiManager wifiManager;
+  Ticker ticker;
+  //reset settings - for testing
+  // wifiManager.resetSettings();
 
   //Pisca LED indicando LED_STATUS
-
   ticker.attach(0.5, tick);
-
-  //reset settings - for testing
-  //wifiManager.resetSettings();
 
   //Chama modo AP para configuração WiFi
   wifiManager.setAPCallback(configModeCallback);
@@ -65,12 +65,10 @@ void conectaWiFi()
     Serial.println("Falha de conexão WiFi");
   }
 
-  //Conexão realizada com sucesso
-  Serial.println("Conectado com sucesso");
-
   //Desabilita o ticker e mantém led status ligado
   ticker.detach();
-
+  //Conexão realizada com sucesso
+  Serial.println("Conectado com sucesso");
   digitalWrite(LED_STATUS, HIGH);
 }
 
@@ -82,8 +80,6 @@ void conectaWiFi()
 
 void configModeCallback(WiFiManager *myWiFiManager)
 {
-  // Instância Objetos
-
   Ticker ticker;
 
   Serial.println("Entrou no modo AP - Gentileza Acessar");
@@ -96,11 +92,45 @@ void configModeCallback(WiFiManager *myWiFiManager)
 
 /*Função: tick
   Função para piscar o LED_STATUS
-  Parâmetros: nenhum
+  Parâmetros: inteiro: pino inteiro: tempo
   Retorno: nenhum
 */
 
 void tick()
 {
   digitalWrite(LED_STATUS, !digitalRead(LED_STATUS));
+}
+
+/*Função: configInterrupt
+  Configura Interrupção por borda de descida do pino ZERO_CROSS
+  Parâmetros: nenhum
+  Retorno: nenhum
+*/
+
+void configInterrupt()
+{
+  attachInterrupt(digitalPinToInterrupt(ZERO_CROSS), trataISR, FALLING);
+}
+
+
+/*Função: desabilitaWDT
+  Desabilita Watch Dog Timer ESP
+  Parâmetros: nenhum
+  Retorno: nenhum
+*/
+
+void desabilitaWDT()
+{
+  ESP.wdtDisable();
+}
+
+/*Função: habilitaWDT
+  Habilita Watch Dog Timer ESP
+  Parâmetros: nenhum
+  Retorno: nenhum
+*/
+
+void habilitaWDT()
+{
+  ESP.wdtEnable(1E3);
 }
