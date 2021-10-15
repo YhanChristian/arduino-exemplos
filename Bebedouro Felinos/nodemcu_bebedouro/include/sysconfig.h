@@ -13,16 +13,16 @@
 
 // Entradas
 
-#define ZERO_CROSS D2
+#define ZERO_CROSS D1
+#define HABILITA_SISTEMA D2
 #define SENSOR_NIVEL D3
-#define HABILITA_SISTEMA D4
 
 // Saídas 
 
+#define SAIDA_PWM D0
 #define LED_NIVEL_ALTO D5
 #define LED_NIVEL_BAIXO D6
 #define LED_STATUS D7
-#define SAIDA_PWM D8
 
 // Defines Gerais
 

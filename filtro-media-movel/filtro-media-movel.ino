@@ -9,9 +9,9 @@
 
 #define BAUD_RATE   9600
 
-#define N           10 //Número de pontos média
+#define N           100 //Número de pontos média
 
-#define INTERVALO   100
+#define INTERVALO   10
 
 
 //============================ Variáveis e Constantes ================================

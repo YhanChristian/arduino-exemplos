@@ -10,7 +10,7 @@
 
 // --- Definições de rede ---
 
-const char* ssid = "xxxx";
+const char* ssid = "xxx";
 const char* password = "xxx";
 
 // --- Variável pin led 13 = pino D7 Nodemcu ---
@@ -97,4 +97,3 @@ void loop() {
   Serial.println("Cliente desconectado");
   Serial.println("");
 }
-
