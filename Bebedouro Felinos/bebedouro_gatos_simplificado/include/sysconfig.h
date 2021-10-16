@@ -28,6 +28,13 @@
 #define LED_NIVEL_BAIXO 9
 #define LED_INDICACAO 10
 
+//Defines Gerais
+
+#define BAUD_RATE 9600
+#define TEMPO_ESPERA (uint8_t) 10
+#define TEMPO_PISCA_INICIAL 250
+#define TEMPO_PISCA_ALARME 100
+#define POTENCIA_SAIDA 40
 
 #endif
 
