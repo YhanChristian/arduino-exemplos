@@ -1,0 +1,26 @@
+Para o ESP32 alterar arquivo.hex para arquivo.bin e caminho para: esp32doit-devkit-v1
+
+[wokwi]
+version = 1
+elf = ".pio/build/esp32doit-devkit-v1/firmware.elf"
+firmware = ".pio/build/esp32doit-devkit-v1/firmware.bin"
+
+
+//defines para trablahar com ESP32
+
+/*#if defined(ARDUINO_ARCH_AVR)
+#define BAUD_RATE 9600
+#else
+#define BAUD_RATE 115200
+#endif
+*/
+
+
+/*
+#if defined(ARDUINO_ARCH_AVR)
+#include <Arduino_FreeRTOS.h>
+#else
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#endif
+*/
